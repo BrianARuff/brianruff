@@ -8,7 +8,7 @@ export default function Layout({ children }) {
 
         <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-        <meta property="og:title" content="Brian Ruff&apos;s Portfolio" />
+        <meta property="og:title" content="Brian Ruff's Portfolio" />
         <meta property="og:type" content="article" />
         <meta property="og:url" content="https://brianruff.com" />
         <meta

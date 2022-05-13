@@ -9,18 +9,9 @@ import styles from "../styles/Home.module.scss";
 export default function Home() {
   return (
     <section className={styles.homeSection}>
-      <h1>Brian Ruff&apos;s Website</h1>
-      <Image
-        style={{ borderRadius: "50%" }}
-        aria-describedby="Brian Ruff"
-        alt="Brian Ruff"
-        height={300}
-        width={300}
-        src={"/small-me.jpg"}
-      />
       <Head>
         <Head>
-          <meta name="robots" content="follow" />
+          <meta name="robots" content="index, follow, noodp, noydir" />
 
           <meta name="viewport" content="width=device-width, initial-scale=1" />
 
@@ -36,7 +27,7 @@ export default function Home() {
             property="og:description"
             content="Get to know me and my work."
           />
-          <meta property="og:site_name" content="Brian Ruff" />
+          <meta property="og:site_name" content="BrianRuff.com" />
           <meta charSet="utf-8" />
           <meta name="author" content="Brian Ruff" />
           <meta name="copyright" content="Brian Ruff" />
@@ -66,10 +57,31 @@ export default function Home() {
             property="og:video:secure_url"
             content="https://www.youtube.com/watch?v=04854XqcfCY"
           />
+
+          {/* twitter meta tags */}
+          <meta name="twitter:title" content="Brian Ruff&pos; Portfolio" />
+          <meta name="twitter:card" content="summary_large_image" />
+          <meta name="twitter:site" content="@brff19" />
+          <meta
+            name="twitter:description"
+            content="Get to know me and my work."
+          />
+          <meta name="twitter:image" content="/small-me.jpg" />
+
           <link rel="icon" href={"/small-me.jpg"} />
+
           <title>Brian Ruff&apos;s Portfolio</title>
         </Head>
       </Head>
+      <h1>Brian Ruff&apos;s Website</h1>
+      <Image
+        style={{ borderRadius: "50%" }}
+        aria-describedby="Brian Ruff"
+        alt="Brian Ruff"
+        height={300}
+        width={300}
+        src={"/small-me.jpg"}
+      />
       <p>
         I&apos;m not 100% sure what I want to do with this yet, so this is
         placeholder content until I figure that out. Until then, I&apos;ll keep

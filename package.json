@@ -8,9 +8,6 @@
     "start": "next start",
     "lint": "next lint"
   },
-  "engines": {
-    "node": "18.x"
-  },
   "dependencies": {
     "blob": "^0.1.0",
     "fs": "^0.0.1-security",

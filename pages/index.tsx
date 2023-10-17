@@ -1,65 +1,81 @@
 import Link from "next/link";
 import Image from "next/image";
 import styles from "../styles/Home.module.scss";
+import { useEffect, useState } from "react";
+
+const { homeSection, picOfMe } = styles;
+
+export interface HomePageContent {
+    header: string;
+    description: string;
+}
 
 export default function Home() {
+  const [content, setContent] = useState<HomePageContent | null>(null);
+
+  useEffect(() => {
+    async function fetchData() {
+      const response = await fetch('/content.json');
+      const jsonData = await response.json();
+      setContent(jsonData);
+    }
+
+    fetchData();
+  }, []);
+
+  if (content === null) return <p>Loading...</p>
+
   return (
-    <section className={styles.homeSection}>
-      <h1>Brian Ruff&apos;s Website</h1>
-      <Image
-        style={{ borderRadius: "50%" }}
+    <section>
+      <h1 className={homeSection} dangerouslySetInnerHTML={{
+        __html: content.header
+      }}></h1>
+     <div className={homeSection}>
+     <Image
+        className={picOfMe}
         aria-describedby="Brian Ruff"
         alt="Brian Ruff"
         height={300}
         width={300}
-        src={"/small-me.jpg"}
+        src="/small-me.jpg"
       />
-      <p>
-        I&apos;m not 100% sure what I want to do with this yet, so this is
-        placeholder content until I figure that out. Until then, I&apos;ll keep
-        this site hosted on Google&apos;s servers for at least the following{" "}
-        <span className={styles.googleHostTimePeriod}>seven years</span>, so
-        feel free to contact me with the information below.
+      <p dangerouslySetInnerHTML={{
+        __html: content.description
+      }}>
       </p>
       <address>
         <ul>
-          <li>
-            <a href="mailto:brff19@gmail.com" target="_top">
-              Email
-            </a>
-          </li>
-          <li>
-            <a
-              href="tel:+1-980-240-6927"
-              target="_top"
-              rel="noopener noreferrer"
-            >
-              Phone
-            </a>
-          </li>
-          <li>
-            <Link href={"https://github.com/brianaruff"} passHref>
-              <a target="_blank" rel="noopener noreferrer">
-                Github
-              </a>
-            </Link>
-          </li>
-          <li>
-            <Link href={"https://gitlab.com/brff19"} passHref>
-              <a target="_blank" rel="noopener noreferrer">
-                GitLab
-              </a>
-            </Link>
-          </li>
-          <li>
-            <Link href="https://brianruffportfolio.com/">
-              <a target="_blank" rel="noopener noreferrer">
-                Deprecated Portfolio
-              </a>
-            </Link>
-          </li>
+          {renderLink("https://www.linkedin.com/in/brianaruff", "LinkedIn")}
+          {renderAnchor("mailto:brff19@gmail.com", "Email")}
+          {renderAnchor("tel:+1-980-240-6927", "Phone")}
+          {renderLink("https://github.com/brianaruff", "Github")}
+          {renderLink("https://gitlab.com/brff19", "GitLab")}
+          {renderLink("https://brianruffportfolio.com/", "Deprecated Portfolio")}
         </ul>
       </address>
+     </div>
     </section>
+  );
+}
+
+function renderLink(href: string, text: string) {
+  return (
+    <li>
+      <Link href={href} passHref>
+        <a target="_blank" rel="noopener noreferrer">
+          {text}
+        </a>
+      </Link>
+    </li>
+  );
+}
+
+function renderAnchor(href, text) {
+  return (
+    <li>
+      <a href={href} target="_top" rel="noopener noreferrer">
+        {text}
+      </a>
+    </li>
   );
 }

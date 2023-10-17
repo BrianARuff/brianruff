@@ -10,28 +10,28 @@
   box-shadow: 0 0 5px #ccc;
 
   .picOfMe {
-    width: 300px;
     margin-bottom: 20px;
     border-radius: 50%;
     border: 1px solid red;
-    animation: movePic 10s ease-in-out alternate-reverse infinite;
+    animation: movePic 10s ease-in-out alternate infinite;
   }
 }
 
 @keyframes movePic {
   0% {
-    transform: translateX(300px);
+    // transform:  translateX(-600px);
+    transform:  translateX(0px) rotate(-720deg);
   }
 
   25% {
-    transform: rotate(-360deg);
+    // transform: rotate(-360deg);
   }
 
   50% {
-    transform: rotate(0deg);
   }
 
   100% {
-    transform: translateX(-300px);
+    opacity: 1;
+    transform: translateX(300px) rotate(0deg);
   }
 }

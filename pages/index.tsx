@@ -61,10 +61,10 @@ export default function Home() {
 function renderLink(href: string, text: string) {
   return (
     <li>
-      <Link href={href} passHref>
-        <a target="_blank" rel="noopener noreferrer">
-          {text}
-        </a>
+      <Link href={href} passHref target="_blank" rel="noopener noreferrer">
+
+        {text}
+
       </Link>
     </li>
   );
